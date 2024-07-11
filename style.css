@@ -5,6 +5,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* css for index.html */
 .header {
     position: fixed;
     top: 0;
@@ -28,3 +29,169 @@
     text-decoration: none;
     margin-left: 20px;
 }
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* css for login.html */
+.login_container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
+}
+
+.login_box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 440px;
+    height: 480px;
+    padding: 30px;
+}
+
+.login_header{
+    text-align: center;
+    margin: 20px 0px 40px 0px;
+}
+
+.login_header header{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.input_box .input_fields{
+    width: 100%;
+    height: 60px;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 0 25px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: none;
+    background-color: #e5e5e5;
+}
+
+.submit_button {
+    width: 100%;
+    height: 60px;
+    background: #000000;
+    border-radius: 30px;
+    border: none;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+.input_submit label {
+    position: absolute;
+    top: 73.5%;
+    left: 50%;
+    color: #ffffff;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.register_button {
+    width: 100%;
+    height: 60px;
+    background: #ffffff;
+    border-radius: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.register_submit label {
+    position: absolute;
+    top: 82.1%;
+    left: 50%;
+    color: #000000;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* css for register.html */
+.register_container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
+}
+
+.register_box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 440px;
+    height: 480px;
+    padding: 30px;
+}
+
+.register_header{
+    text-align: center;
+    margin: 20px 0px 40px 0px;
+}
+
+.register_header header{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.register_input_box .register_input_fields{
+    width: 100%;
+    height: 60px;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 0 25px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: none;
+    background-color: #e5e5e5;
+}
+
+.registerpage_register_button {
+    width: 100%;
+    height: 60px;
+    background: #000000;
+    border-radius: 30px;
+    border: none;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+.register_input_submit label {
+    position: absolute;
+    top: 73.5%;
+    left: 50%;
+    color: #ffffff;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.registerpage_signin_button {
+    width: 100%;
+    height: 60px;
+    background: #ffffff;
+    border-radius: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.registerpage_submit label {
+    position: absolute;
+    top: 82.1%;
+    left: 50%;
+    color: #000000;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
