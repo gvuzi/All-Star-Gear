@@ -30,6 +30,29 @@
     margin-left: 20px;
 }
 
+.search {
+    width: fit-content;
+    display: flex;
+    padding: 14px;
+    border-radius: 28px;
+    background: #f6f6f6;
+}
+
+.search_icon {
+    color: #333333;
+    text-decoration: none;
+}
+
+.search_input {
+    font-size: 16px;
+    color: #333333;
+    width: 600px;
+    margin-left: 14px;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* css for login.html */
