@@ -2,11 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 /* css for index.html */
+
+
 .header {
+    background-color: white;
     position: fixed;
     top: 0;
     left: 0;
@@ -52,6 +55,44 @@
     border: none;
     background: transparent;
 }
+
+.mainpage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 250px;
+}
+
+.left_main_column {
+    max-width: 100%;
+    padding: 400px 0;
+}
+
+.left_main_column h1 {
+    color: #000000;
+    line-height: 90px;
+    font-size: 100px;
+    font-weight: 800;
+    font-style: italic;
+}
+
+
+
+.main_button {
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: 700px;
+    font-size: 16px;
+    width: 175px;
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -106,7 +147,7 @@
 
 .input_submit label {
     position: absolute;
-    top: 73.5%;
+    top: 71.5%;
     left: 50%;
     color: #ffffff;
     transform: translate(-50%, -50%);
@@ -126,7 +167,7 @@
 
 .register_submit label {
     position: absolute;
-    top: 82.1%;
+    top: 79.1%;
     left: 50%;
     color: #000000;
     transform: translate(-50%, -50%);
@@ -188,7 +229,7 @@
 
 .register_input_submit label {
     position: absolute;
-    top: 73.5%;
+    top: 71.5%;
     left: 50%;
     color: #ffffff;
     transform: translate(-50%, -50%);
@@ -208,7 +249,7 @@
 
 .registerpage_submit label {
     position: absolute;
-    top: 82.1%;
+    top: 79.1%;
     left: 50%;
     color: #000000;
     transform: translate(-50%, -50%);
