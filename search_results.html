@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body class ="search_results">
+   <!-- Header/Navigation Bar -->
+   <header class="header">
+    <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='images/allstar.png') }}" width="135px"></a>
+    <form action="{{ url_for('search') }}" method="GET">
+        <div class="search">
+            <input class ="search_input" type="search" name="query" placeholder="Search">
+            <a href="#"><button type= "submit"><span class="search_icon material-symbols-outlined">search</span></button></a>
+        </div>
+    </form>
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/home.png') }}" width="30px"></a>
+        <a href="{{ url_for('login') }}"><img src="{{ url_for('static', filename='images/login.png') }}" width="30px"></a>
+        <a href=""><img src="{{ url_for('static', filename='images/shoppingcart.png') }}" width="30px"></a>
+    </nav>
+    </header>
+<!-- Search Results -->
+    <h1>Search Results</h1>
+    <div class="storeitems-container">
+        {% for item in items %}
+            <div class="item">
+                <a href="{{ url_for('item_detail', item_id=item[0]) }}">
+                <h2>{{ item[1] }}</h2>
+                <img src="{{ url_for('static', filename=item[5]) }}" alt="{{ item[1]  }}" style="width:100px;height:auto;">
+                <p>{{ item[2] }}</p>
+                <p>Price: ${{ item[3] }}</p>
+                <p>Category: {{ item[4] }}</p>
+                </a>
+            </div>
+        {% else %}
+            <div class="item">
+                No items found.
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
