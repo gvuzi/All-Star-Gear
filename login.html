@@ -4,34 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All-Star Gear</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
     <div class="login_container"> 
     <div class="login_box">
         <div class="login_header">
-            <a href="index.html"><img src="images/allstar.png" width="175px"></a>
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/allstar.png') }}" width="175px"></a>
             <header>Login</header>
         </div>
         <!-- Input Fields -->
-        <div class="input_box">
-            <input type="text" class="input_fields" placeholder="Email" autocomplete="off" required>
-        </div>
-        <div class="input_box">
-            <input type="password" class="input_fields" placeholder="Password" autocomplete="off" required>
-        </div>
-        <!-- Sign In Button -->
-        <div class="input_submit">
-            <a href="index.html"><button class="submit_button" id="submit"></button></a>
-            <label for="submit">Sign In</label>
-        </div>
+         <form action="{{ url_for('login') }}" method="POST">
+            <div class="input_box">
+                <input type="text" name="email" class="input_fields" placeholder="Email" autocomplete="off" required>
+            </div>
+            <div class="input_box">
+                <input type="password" name="password" class="input_fields" placeholder="Password" autocomplete="off" required>
+            </div>
+            <!-- Sign In Button -->
+            <div class="input_submit">
+                <button type="submit" class="submit_button" id="submit"></button>
+                <label for="submit">Sign In</label>
+            </div>
+        </form>
         <!-- Register Button -->
         <div class="register_submit">
-            <a href="register.html"><button class="register_button" id="register"></button></a>
+            <a href="{{ url_for('register') }}"><button class="register_button" id="register"></button></a>
             <label for="register">Register</label>
         </div>
-
     </div>
     </div>
 </body>
