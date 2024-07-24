@@ -55,6 +55,8 @@ def store():
 #Create route/function that accepts GET and POST requests when user attempts to login
 @app.route('/login', methods=['GET','POST'])
 def login():
+    if 'user_id' in session: #If the user is signed in redirect them to the edit profile page
+        return redirect(url_for('edit_profile'))
     conn = sqlite3.connect('data/AllStarDatabase.db')
     cursor = conn.cursor()
     if request.method == 'POST':
