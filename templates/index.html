@@ -37,7 +37,9 @@
     <div class="mainpage">
         <div class="left_main_column">
             <h1>Become an<br>All-Star.</h1>
-            <a href="{{ url_for('login') }}"><button class="main_button">Get Started</button></a>
+            <form action="{{ url_for('get_started') }}" method="GET">
+            <button type="submit" class="main_button" id="get_started">Get Started</button>
+            </form>
         </div>
     </div>
 

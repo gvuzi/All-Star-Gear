@@ -17,6 +17,13 @@ def init_db():
 def index():
     return render_template('index.html')
 
+#Creates route/function for when user presses Get Started
+@app.route('/get_started', methods=['GET'])
+def get_started():
+    if 'user_id' in session: #If the user is signed in redirect them to the store page showing all items 
+        return redirect(url_for('store'))
+    return redirect(url_for('login')) #Prompts user to login if not logged in
+
 #Create route/function that accepts GET and POST requests when user presses registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
