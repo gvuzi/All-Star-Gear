@@ -29,10 +29,12 @@
             </div>
         </form>
         <!-- Logout Button -->
+        <form action="{{ url_for('logout') }}" method="GET">
         <div class="logout_submit">
-            <a href="{{ url_for('index') }}"><button class="logout_button" id="logout"></button></a>
+            <button type="submit"class="logout_button" id="logout"></button>
             <label for="logout">Logout</label>
         </div>
+        </form>
     </div>
     </div>
 </body>

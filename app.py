@@ -20,7 +20,7 @@ def index():
 #Create route/function that accepts GET and POST requests when user presses registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if 'user_id' in session: #If the user is not signed in redirect them to the edit profile page
+    if 'user_id' in session: #If the user is signed in redirect them to the edit profile page
         return redirect(url_for('edit_profile'))
     #Connects to the database and initliazes sql cursor for database manipulation
     conn = sqlite3.connect('data/AllStarDatabase.db')
@@ -89,7 +89,10 @@ def edit_profile():
     return render_template('edit_profile.html', email=email, password=password) #Loads edit profile page with user information
 
 #Creates route/function for when user logouts
-
+@app.route('/logout', methods=['GET'])
+def logout():
+    session.pop('user_id', None) #Removes user_id token from session 
+    return redirect(url_for('index'))
 
 #Create route/function for when user attempts to search
 @app.route('/search', methods=['GET'])
