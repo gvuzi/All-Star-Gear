@@ -1,7 +1,8 @@
 # All-Star Gear
 
-All-Star Gear is an eCommerce website developed for UTSA CS3773 Project.
+All-Star Gear is an eCommerce website developed for UTSA CS3773.
 
+## Tech Stack
 
 <div align="left">
   <img src="https://cdn.worldvectorlogo.com/logos/flask.svg" height="40" alt="flask_logo"/>
@@ -10,7 +11,7 @@ All-Star Gear is an eCommerce website developed for UTSA CS3773 Project.
   <img width="12" />
   <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" height="40" alt="css_logo"/>
   <img width="12" />
-  <img src="https://e7.pngegg.com/pngimages/890/928/png-clipart-sqlite-logo-sqlite-logo-icons-logos-emojis-tech-companies.png" height="40" alt="sqlite_logo"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Sqlite-square-icon.svg/1200px-Sqlite-square-icon.svg.png" height="40" alt="sqlite_logo"/>
   <img width="12" />
  
 </div>
