@@ -1,4 +1,4 @@
-from flask import Flask,url_for, redirect, render_template,session, request
+from flask import Flask,url_for, redirect, render_template,session, request, flash
 import sqlite3
 
 app = Flask(__name__)
@@ -20,7 +20,9 @@ def index():
 #Create route/function that accepts GET and POST requests when user presses registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    #Connecs to the database and initliazes sql cursor for database manipulation
+    if 'user_id' in session: #If the user is not signed in redirect them to the edit profile page
+        return redirect(url_for('edit_profile'))
+    #Connects to the database and initliazes sql cursor for database manipulation
     conn = sqlite3.connect('data/AllStarDatabase.db')
     cursor = conn.cursor()
     if request.method == 'POST': #If user submitted registration request
@@ -61,6 +63,32 @@ def login():
         else:
             return "Email or password is incorrect"
     return render_template('login.html')
+
+#Creates route/function that accepts GET and POST requests when user presses login icon in header when already logged in
+@app.route('/edit_profile', methods=['GET','POST'])
+def edit_profile():
+    user_id = session['user_id']
+    conn = sqlite3.connect('data/AllStarDatabase.db')
+    cursor = conn.cursor()
+
+    if request.method == 'POST':
+        email = request.form.get('email') #Gets user edited email
+        password = request.form.get('password') #Gets user edited password
+        #Updates user information in the user table
+        cursor.execute('''UPDATE users SET email = :email, password = :password WHERE id = :user_id''', {'email':email, 'password':password, 'user_id': user_id})
+        conn.commit() #Saves changes to database
+        conn.close() #Close connection
+        return redirect(url_for('index'))
+
+    #Fetch current user information from the users table
+    cursor.execute('''SELECT email, password FROM users WHERE id = :user_id''', {'user_id':user_id})
+    user_data = cursor.fetchone()
+    email, password = user_data;
+    conn.close()
+
+    return render_template('edit_profile.html', email=email, password=password) #Loads edit profile page with user information
+
+#Creates route/function for when user logouts
 
 
 #Create route/function for when user attempts to search
@@ -123,6 +151,7 @@ def cart():
     fullCart = cursor.fetchall() #Gets all of the values returned from database
     conn.close()
     return render_template('cart.html', cart_items=fullCart)
+
 
 #Initializes the database and runs Flask
 if __name__=='__main__':

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-Star Gear</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <div class="login_container"> 
+    <div class="login_box">
+        <div class="login_header">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/allstar.png') }}" width="175px"></a>
+            <header>Edit Profile</header>
+        </div>
+        <!-- Input Fields -->
+         <form action="{{ url_for('edit_profile') }}" method="POST">
+            <div class="input_box">
+                <input type="text" name="email" class="input_fields" value="{{ email }}" autocomplete="off" required>
+            </div>
+            <div class="input_box">
+                <input type="text" name="password" class="input_fields" value="{{ password }}" autocomplete="off" required>
+            </div>
+            <!-- Sign In Button -->
+            <div class="input_submit">
+                <button type="submit" class="submit_button" id="submit"></button>
+                <label for="submit">Edit Profile</label>
+            </div>
+        </form>
+        <!-- Logout Button -->
+        <div class="logout_submit">
+            <a href="{{ url_for('index') }}"><button class="logout_button" id="logout"></button></a>
+            <label for="logout">Logout</label>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
