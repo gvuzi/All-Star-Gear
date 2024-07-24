@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-Star Gear</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+ 
+    <!-- Background Image -->
+    <style type="text/css">
+        body {
+            background-image: url("https://images.pexels.com/photos/1654498/pexels-photo-1654498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        </style>
+    <!-- Header/Navigation Bar -->
+    <header class="header">
+    <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='images/allstar.png') }}" width="135px"></a>
+    <form action="{{ url_for('search') }}" method="GET">
+        <div class="search">
+            <input class ="search_input" type="search" name="query" placeholder="Search">
+            <a href="#"><button type="submit"><span class="search_icon material-symbols-outlined">search</span></button></a>
+        </div>
+    </form>
+    <nav class="navbar">
+        <a href="{{ url_for('store') }}"><img src="{{ url_for('static', filename='images/home.png') }}" width="30px"></a>
+        <a href="{{ url_for('register') }}"><img src="{{ url_for('static', filename='images/login.png') }}" width="30px"></a>
+        <a href="{{ url_for('cart') }}"><img src="{{ url_for('static', filename='images/shoppingcart.png') }}" width="30px"></a>
+    </nav>
+    </header>
+
+    <!-- Flex Column for Main Page -->
+    <div class="mainpage">
+        <div class="left_main_column">
+            <h1>Become an<br>All-Star.</h1>
+            <a href="{{ url_for('login') }}"><button class="main_button">Get Started</button></a>
+        </div>
+    </div>
+
+</body>
+</html>

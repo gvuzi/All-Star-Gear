@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-Star Gear</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <!-- Header/Navigation Bar -->
+    <header class="header">
+        <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='images/allstar.png') }}" width="135px"></a>
+        <form action="{{ url_for('search') }}" method="GET">
+            <div class="search">
+                <input class ="search_input" type="search" name="query" placeholder="Search">
+                <a href="#"><button type= "submit"><span class="search_icon material-symbols-outlined">search</span></button></a>
+            </div>
+        </form>
+        <nav class="navbar">
+            <a href="{{ url_for('store') }}"><img src="{{ url_for('static', filename='images/home.png') }}" width="30px"></a>
+            <a href="{{ url_for('login') }}"><img src="{{ url_for('static', filename='images/login.png') }}" width="30px"></a>
+            <a href="{{ url_for('cart') }}"><img src="{{ url_for('static', filename='images/shoppingcart.png') }}" width="30px"></a>
+        </nav>
+    </header>
+    <!-- Prints the details of the item clicked -->
+    <h1>{{ item[1] }}</h1>
+    <img src="{{ url_for('static', filename=item[5]) }}" style="width:300px;">
+    <p>{{ item[2] }}</p>
+    <p>${{ item[3] }}</p>
+    <p>Item Category: {{ item[4] }}</p>
+    <!-- Adds item clicked to to cart through add_to_cart route -->
+    <form action="{{ url_for('add_to_cart',item_id=item[0]) }}" method="POST">
+        <button type="submit">Add to Cart</button>
+    </form>
+</body>
+
+</html>
