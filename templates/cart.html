@@ -25,31 +25,39 @@
     </header>
 
 
-    <!-- Shopping Cart -->
+  <!-- Shopping Cart -->
     <div class="cart_page_container">
         <table>
             <tr>
                 <th>Shopping Cart</th> <!-- Table Header -->
             </tr>
-            <!-- Goes through each item in the cart and prints it's information in table data -->
+            <!-- Goes through each item in the cart and prints it's information in table data, allows for increasing quantity of items in cart -->
                 {% for item in cart_items %}
                 <tr class="table_rows">
+                    <form action="{{ url_for('update_cart') }}" method="POST">
+                        <input type="hidden"name="item_id" value="{{ item[0] }}">
                     <td class="table_data">
                         <div class="cart_info">
-                        <img src="{{ url_for('static', filename=item[5]) }}" class="item_img""> 
+                        <img src="{{ url_for('static', filename=item[5]) }}" class="item_img"> 
                         <div>
                             <small>{{ item[4] }}</small>
                             <p>{{ item[1] }}</p>
                         </div>
                         </div>
                     </td>
-                    <td><input type ="number" value="1"></td>
+                    <td><input type ="number" name="amount" value="{{ item[6] }}" min="1" required></td>
                     <td>${{ item[3] }}</td>
-                    <td><a href=""><img src="{{ url_for('static', filename='images/remove.png') }}" width="25px"></a></td>
+                </form>
+                <!-- Removes item from shopping cart -->
+                <form action="{{ url_for('remove_item') }}" method="POST">
+                    <input type="hidden" name="item_id"value="{{ item[0] }}">
+                    <td> <button type="submit" style="border:none;background:none"><img src="{{ url_for('static', filename='images/remove.png') }}" width="25px"></button></td>
                 </tr>
+            </form>
                 {% endfor %}
         </table>
     </div>
+
 
     <div class="subtotal_container">
         <table class="subtotal_table">
