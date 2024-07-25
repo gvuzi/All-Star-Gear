@@ -7,37 +7,53 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
-<body class ="search_results">
-   <!-- Header/Navigation Bar -->
-   <header class="header">
-    <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='images/allstar.png') }}" width="135px"></a>
-    <form action="{{ url_for('search') }}" method="GET">
-        <div class="search">
-            <input class ="search_input" type="search" name="query" placeholder="Search">
-            <a href="#"><button type= "submit"><span class="search_icon material-symbols-outlined">search</span></button></a>
-        </div>
-    </form>
-    <nav class="navbar">
-        <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/home.png') }}" width="30px"></a>
-        <a href="{{ url_for('login') }}"><img src="{{ url_for('static', filename='images/login.png') }}" width="30px"></a>
-        <a href="{{ url_for('cart') }}"><img src="{{ url_for('static', filename='images/shoppingcart.png') }}" width="30px"></a>
-    </nav>
+<body class="search_results">
+    <!-- Header/Navigation Bar -->
+    <header class="header">
+        <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='images/allstar.png') }}" width="135px"></a>
+        <form action="{{ url_for('search') }}" method="GET">
+            <div class="search">
+                <input class="search_input" type="search" name="query" placeholder="Search">
+                <button type="submit"><span class="search_icon material-symbols-outlined">search</span></button>
+            </div>
+        </form>
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/home.png') }}" width="30px"></a>
+            <a href="{{ url_for('login') }}"><img src="{{ url_for('static', filename='images/login.png') }}" width="30px"></a>
+            <a href="{{ url_for('cart') }}"><img src="{{ url_for('static', filename='images/shoppingcart.png') }}" width="30px"></a>
+        </nav>
     </header>
-<!-- Search Results -->
-    <h1>Search Results</h1> <!-- HELP -->
+
+    <!-- Sorting Options -->
+    <div class="sorting">
+        <form action="{{ url_for('search') }}" method="GET">
+            <input type="hidden" name="query" value="{{ request.args.get('query', '') }}">
+            <label for="sort_by">Sort by:</label>
+            <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+                <option value="relevance" {% if request.args.get('sort_by') == 'relevance' %}selected{% endif %}>Relevance</option>
+                <option value="price_asc" {% if request.args.get('sort_by') == 'price_asc' %}selected{% endif %}>Price: Low to High</option>
+                <option value="price_desc" {% if request.args.get('sort_by') == 'price_desc' %}selected{% endif %}>Price: High to Low</option>
+                <option value="availability" {% if request.args.get('sort_by') == 'availability' %}selected{% endif %}>Availability</option>
+            </select>
+        </form>
+    </div>
+
+    <!-- Search Results -->
+    <h1>Search Results</h1>
+    <div class="results-grid">
         {% for item in items %}
-            <div class="searchresults-container">
-                <!-- Creates link for each item to be taken to its details page -->
-                <a href="{{ url_for('item_detail', item_id=item[0]) }}"> 
-                <img src="{{ url_for('static', filename=item[5]) }}" style="width:100px;">
-                <p>${{ item[3] }}</p>
-                <p>{{ item[1] }}</p>
+            <div class="result-item">
+                <a href="{{ url_for('item_detail', item_id=item[0]) }}">
+                    <img src="{{ url_for('static', filename=item[5]) }}" alt="{{ item[1] }}">
+                    <p>{{ item[1] }}</p>
+                    <p>${{ item[3] }}</p>
                 </a>
             </div>
         {% else %}
-            <div class="item">
+            <div class="no-results">
                 No matching items found.
             </div>
         {% endfor %}
+    </div>
 </body>
 </html>

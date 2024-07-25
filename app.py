@@ -91,12 +91,27 @@ def logout():
     session.pop('user_id', None)
     return redirect(url_for('index'))
 
+# Updated search route with sorting functionality
 @app.route('/search', methods=['GET'])
 def search():
     conn = sqlite3.connect('data/AllStarDatabase.db')
     cursor = conn.cursor()
     userQuery = request.args.get('query', '')
-    cursor.execute('''SELECT * FROM items WHERE name LIKE ? OR category LIKE ?''', ('%' + userQuery + '%', '%' + userQuery + '%'))
+    sort_by = request.args.get('sort_by', 'relevance')
+
+    # Base query
+    query = "SELECT * FROM items WHERE name LIKE ? OR category LIKE ?"
+    params = ('%' + userQuery + '%', '%' + userQuery + '%')
+
+    # Modify query based on sorting
+    if sort_by == 'price_asc':
+        query += " ORDER BY price ASC"
+    elif sort_by == 'price_desc':
+        query += " ORDER BY price DESC"
+    elif sort_by == 'availability':
+        query += " ORDER BY availability DESC"  # Assuming you have an 'availability' column
+
+    cursor.execute(query, params)
     matchingItems = cursor.fetchall()
     conn.close()
     return render_template('search_results.html', items=matchingItems)

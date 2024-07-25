@@ -268,9 +268,12 @@
     cursor: pointer;
 }
 
-/* css for search_template.html */
+/* css for search_results.html */
 body.search_results {
     padding-top: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .search_results .header {
@@ -309,6 +312,84 @@ body.search_results {
 .search_results .search_icon {
     color: #333333;
     text-decoration: none;
+    outline: none;
+}
+
+.search_results .search_input {
+    font-size: 16px;
+    color: #333333;
+    width: 600px;
+    margin-left: 14px;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.sorting {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.sorting form {
+    display: flex;
+    align-items: center;
+}
+
+.sorting label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.sorting select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.results-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.result-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+}
+
+.result-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.result-item p {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.result-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.no-results {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
 }
 
 .search_results .search_input {
@@ -458,4 +539,149 @@ td img.item_img {
 
 .image {
     margin-bottom: 15px;
+}
+
+/* css for item_detail.html */
+body.item_details {
+    padding-top: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.item_details .header {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.item_details .logo {
+    font-size: 32px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #555;
+}
+
+.item_details .navbar a {
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.item_details .search {
+    width: fit-content;
+    display: flex;
+    padding: 14px;
+    border-radius: 28px;
+    background: #f6f6f6;
+}
+
+.item_details .search_icon {
+    color: #333333;
+    text-decoration: none;
+    outline: none;
+}
+
+.item_details .search_input {
+    font-size: 16px;
+    color: #333333;
+    width: 600px;
+    margin-left: 14px;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.item-details {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.item-details .item-image {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 40px;
+}
+
+.item-details .item-info {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-details .item-info h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.item-details .item-info .item-price {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.item-details .item-info .item-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.item-details .item-info .item-category {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #777;
+}
+
+.item-details .item-info .add-to-cart-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.item-details .item-info .add-to-cart-button:hover {
+    background-color: #218838;
+}
+
+/* Sorting Options */
+.sorting {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.sorting form {
+    display: flex;
+    align-items: center;
+}
+
+.sorting label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.sorting select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
