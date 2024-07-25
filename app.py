@@ -109,12 +109,13 @@ def search():
     elif sort_by == 'price_desc':
         query += " ORDER BY price DESC"
     elif sort_by == 'availability':
-        query += " ORDER BY availability DESC"  # Assuming you have an 'availability' column
+        query += " AND availability = 'In Stock' ORDER BY availability DESC"  # Assuming 'In Stock' is the value for available items
 
     cursor.execute(query, params)
     matchingItems = cursor.fetchall()
     conn.close()
     return render_template('search_results.html', items=matchingItems)
+
 
 @app.route('/item/<item_id>')
 def item_detail(item_id):
