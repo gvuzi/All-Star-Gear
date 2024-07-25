@@ -24,18 +24,65 @@
         </nav>
     </header>
 
-    <h1>Shopping Cart</h1> 
-        <!-- Goes through each item in the cart and prints it's information -->
-        {% for item in cart_items %}
-            <div class="cart-items">
-                <img src="{{ url_for('static', filename=item[5]) }}" style="width:100px">
-                <p>${{ item[3] }}</p>
-                <p>{{ item[1] }}</p>
-        {% else %}
-        <div class="empty-cart">
-            Shopping cart is empty
-            </div>
-        </div>
-        {% endfor %}
+
+    <!-- Shopping Cart -->
+    <div class="cart_page_container">
+        <table>
+            <tr>
+                <th>Shopping Cart</th> <!-- Table Header -->
+            </tr>
+            <!-- Goes through each item in the cart and prints it's information in table data -->
+                {% for item in cart_items %}
+                <tr class="table_rows">
+                    <td class="table_data">
+                        <div class="cart_info">
+                        <img src="{{ url_for('static', filename=item[5]) }}" class="item_img""> 
+                        <div>
+                            <small>{{ item[4] }}</small>
+                            <p>{{ item[1] }}</p>
+                        </div>
+                        </div>
+                    </td>
+                    <td><input type ="number" value="1"></td>
+                    <td>${{ item[3] }}</td>
+                    <td><a href=""><img src="{{ url_for('static', filename='images/remove.png') }}" width="25px"></a></td>
+                </tr>
+                {% endfor %}
+        </table>
+    </div>
+
+    <div class="subtotal_container">
+        <table class="subtotal_table">
+            <tr class="subtotal_discount">
+                <form action="">
+                    <div class="discount_code">
+                        <input class ="discount_code_input" placeholder="Discount Code">
+                        <a href="#"><button type="submit" class="discount_code_button">Apply</button></a>
+                    </div>
+                </form>
+            </tr>
+            <tr class="subtotal">
+                <td class="left_subtotal_text">Subtotal</td>
+                <td class="right_subtotal_text">$10.00</td>
+            </tr>
+            <tr class="subtotal">
+                <td class="left_subtotal_text">Taxes</td>
+                <td class="right_subtotal_text">$1.50</td>
+            </tr>
+            <tr class="subtotal">
+                <td class="left_subtotal_text">Total</td>
+                <td class="right_subtotal_text">$1062.50</td>
+            </tr>
+            <tr>
+                <td class="checkout_button_td" colspan="2"><button type="submit" class="checkout_button">Checkout</button></td>
+            </tr>
+        </table>
+
+    </div>
+
+   
+    
+
+ 
 </body>
 </html>
