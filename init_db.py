@@ -7,8 +7,7 @@ def init_db():
     conn = sqlite3.connect('data/AllStarDatabase.db') #Connect to database
     cursor = conn.cursor()
     #Create users table where each entry has an id, an email and a password
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS users ( id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL )''')
+    cursor.execute('''CREATE TABLE IF NOT EXISTS users ( id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL )''')
 
     #Create users items table where each entry has an id, name, description, price, category and an image
     cursor.execute('''CREATE TABLE IF NOT EXISTS items (
