@@ -6,7 +6,7 @@ def populate_items():
     conn = sqlite3.connect('data/AllStarDatabase.db')
     cursor = conn.cursor()
     items = [                                                   
-        ('Tennis Racket', 'Tennis racket with extra light frame and stable sring pattern for maximum control', 99.99, 'Tennis','images/tennisracket.jpg'),
+        ('Tennis Racket', 'Tennis racket with extra light frame and stable string pattern for maximum control', 99.99, 'Tennis','images/tennisracket.jpg'),
         ('Hockey Skates', "Thermoformable skates, made for enhanced comfort and fit", 139.99, 'Hockey','images/hockeyskates.jpg'),
         ('Punching Bag', 'Made with maximum impact absorption foam and fiber-sand for intense striking', 249.99, 'Boxing', 'images/punchingbag.jpg'),
         ('Basketball', 'High endurance basketball', 29.99, 'Basketball','images/basketball.png'),
