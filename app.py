@@ -148,7 +148,6 @@ def add_to_cart(item_id):
     conn.close()
     return redirect(url_for('item_detail',item_id=item_id))
 
-#Creates route/function for user to view their carts content
 @app.route('/cart')
 def cart():
     if 'user_id' not in session: #If the user is not signed in redirect them to the login page
@@ -158,11 +157,46 @@ def cart():
     currUser= session['user_id']
     #Retrieve all items and item information found in the current users cart
     cursor.execute('''
-        SELECT items.id, items.name, items.description, items.price, items.category, items.image FROM carts
+        SELECT items.id, items.name, items.description, items.price, items.category, items.image, carts.amount FROM carts
         JOIN items ON carts.item_id = items.id WHERE carts.user_id = :currUser ''', {'currUser':currUser,})
     fullCart = cursor.fetchall() #Gets all of the values returned from database
     conn.close()
-    return render_template('cart.html', cart_items=fullCart)
+    cart_price=sum(float(item[3]) *float(item[6]) for item in fullCart)
+    tax=cart_price*.0825
+    tax_price=cart_price + tax
+    return render_template('cart.html', cart_items=fullCart, tax=tax, with_tax=tax_price, cart_price=cart_price)
+
+#Creates route/function for adding/removing items from shopping cart
+@app.route('/update_cart', methods=['POST'])
+def update_cart():
+    item_id=request.form.get('item_id') #Gets the item to be updated
+    updated_amount=request.form.get('amount') #Gets the new amount for the item
+    user=session['user_id'] #Gets the current user logged in
+    conn=sqlite3.connect('data/AllStarDatabase.db')
+    cursor = conn.cursor()
+    try:
+        updated_amount=int(updated_amount)
+    except ValueError as e:
+        return redirect(url_for('cart'))
+    #Updates the amount of the item the user requested in the database
+    cursor.execute(''' UPDATE carts SET amount = ? WHERE user_id = ? AND item_id = ?''', (updated_amount,user,item_id))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('cart'))
+
+#Creates route/function for completely removing an item from shopping cart
+@app.route('/remove_item',methods=['POST'])
+def remove_item():
+    item_id=request.form.get('item_id')
+    user=session['user_id']
+    conn=sqlite3.connect('data/AllStarDatabase.db')
+    cursor=conn.cursor()
+    #Deletes the clicked item from shopping cart completely
+    cursor.execute('''DELETE FROM carts WHERE user_id = ? AND item_id = ?''',(user,item_id))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('cart'))
+
 
 
 #Initializes the database and runs Flask
