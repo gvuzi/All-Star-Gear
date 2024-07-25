@@ -451,3 +451,40 @@ td img.item_img{
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+/* css for store.html */
+
+.store-container {
+    display: flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+
+.database-items a {
+    color: inherit;
+    text-decoration:none;
+}
+
+.cost {
+    font-weight: bold;
+}
+
+.database-items {
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
+    text-decoration:none;
+    color: inherit;
+    width: 250px;
+    margin: 20px;
+    margin-bottom: 20px
+}
+
+.title{
+    text-align:center;
+    margin-bottom: 30px;
+}
+
+.image {
+    margin-bottom: 15px;
+}

@@ -24,14 +24,17 @@
     </nav>
 </header>
     <!-- Prints all items retrieved from database -->
-    <h1>All Items</h1>
-    {% for item in items %}
-        <div class="database-items">
-            <!-- Creates a URL for each items detail page-->
-            <a href="{{ url_for('item_detail', item_id=item[0]) }}"> 
-            <img src="{{ url_for('static',filename=item[5]) }}" style="width:100px">
-            <p>${{ item[3] }}</p>
-            <p>{{ item[1] }}</p>
-        </div>
+    <h1 class="title">All Items</h1>
+    <div class="store-container">
+        {% for item in items %}
+            <div class="database-items">
+                <!-- Creates a URL for each items detail page-->
+                <a href="{{ url_for('item_detail', item_id=item[0]) }}"> 
+                    <img src="{{ url_for('static',filename=item[5]) }}" class="image" style="width:250px" >
+                    <p class="cost">${{ item[3] }}</p>
+                    <p>{{ item[1] }}</p>
+                </a>
+            </div>
         {% endfor %}
+    </div>
 </body>
