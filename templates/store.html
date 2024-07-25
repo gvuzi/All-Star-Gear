@@ -20,7 +20,7 @@
     <nav class="navbar">
         <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/home.png') }}" width="30px"></a>
         <a href="{{ url_for('login') }}"><img src="{{ url_for('static', filename='images/login.png') }}" width="30px"></a>
-        <a href=""><img src="{{ url_for('static', filename='images/shoppingcart.png') }}" width="30px"></a>
+        <a href="{{ url_for('cart') }}"><img src="{{ url_for('static', filename='images/shoppingcart.png') }}" width="30px"></a>
     </nav>
 </header>
     <!-- Prints all items retrieved from database -->
