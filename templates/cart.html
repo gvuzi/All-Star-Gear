@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All-Star Gear</title>
+    <title>All-Star Gear - Cart</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        /* CSS for the popup message */
+        .popup {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .popup.show {
+            visibility: visible;
+        }
+    </style>
 </head>
 <body>
     <!-- Header/Navigation Bar -->
@@ -13,76 +35,89 @@
         <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='images/allstar.png') }}" width="135px"></a>
         <form action="{{ url_for('search') }}" method="GET">
             <div class="search">
-                <input class ="search_input" type="search" name="query" placeholder="Search">
-                <a href="#"><button type="submit"><span class="search_icon material-symbols-outlined">search</span></button></a>
+                <input class="search_input" type="search" name="query" placeholder="Search">
+                <button type="submit"><span class="search_icon material-symbols-outlined">search</span></button>
             </div>
         </form>
         <nav class="navbar">
             <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/home.png') }}" width="30px"></a>
             <a href="{{ url_for('login') }}"><img src="{{ url_for('static', filename='images/login.png') }}" width="30px"></a>
-            <a href=""><img src="{{ url_for('static', filename='images/shoppingcart.png') }}" width="30px"></a>
+            <a href="{{ url_for('cart') }}"><img src="{{ url_for('static', filename='images/shoppingcart.png') }}" width="30px"></a>
         </nav>
     </header>
 
-
     <!-- Shopping Cart -->
     <div class="cart_page_container">
-        <table>
-            <tr>
-                <th>Shopping Cart</th> <!-- Table Header -->
-            </tr>
-            <!-- Goes through each item in the cart and prints it's information in table data -->
+        <form method="POST" action="{{ url_for('cart') }}">
+            <table>
+                <tr>
+                    <th>Shopping Cart</th>
+                </tr>
                 {% for item in cart_items %}
                 <tr class="table_rows">
                     <td class="table_data">
                         <div class="cart_info">
-                        <img src="{{ url_for('static', filename=item[5]) }}" class="item_img""> 
-                        <div>
-                            <small>{{ item[4] }}</small>
-                            <p>{{ item[1] }}</p>
-                        </div>
+                            <img src="{{ url_for('static', filename=item[5]) }}" class="item_img">
+                            <div>
+                                <small>{{ item[4] }}</small>
+                                <p>{{ item[1] }}</p>
+                            </div>
                         </div>
                     </td>
-                    <td><input type ="number" value="1"></td>
+                    <td>
+                        <input type="hidden" name="item_id" value="{{ item[0] }}">
+                        <input type="number" name="quantity" value="{{ item[6] }}" min="1">
+                    </td>
                     <td>${{ item[3] }}</td>
-                    <td><a href=""><img src="{{ url_for('static', filename='images/remove.png') }}" width="25px"></a></td>
+                    <td>
+                        <form method="POST" action="{{ url_for('remove_item', item_id=item[0]) }}" style="display:inline;">
+                            <button type="submit"><img src="{{ url_for('static', filename='images/remove.png') }}" width="25px"></button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
-        </table>
+            </table>
+            <div class="subtotal_container">
+                <table class="subtotal_table">
+                    <tr class="subtotal_discount">
+                        <div class="discount_code">
+                            <input class="discount_code_input" placeholder="Discount Code" name="discount_code">
+                            <button type="submit" class="discount_code_button">Apply</button>
+                        </div>
+                    </tr>
+                    <tr class="subtotal">
+                        <td class="left_subtotal_text">Subtotal</td>
+                        <td class="right_subtotal_text">${{ "%.2f"|format(subtotal) }}</td>
+                    </tr>
+                    <tr class="subtotal">
+                        <td class="left_subtotal_text">Taxes</td>
+                        <td class="right_subtotal_text">${{ "%.2f"|format(tax) }}</td>
+                    </tr>
+                    <tr class="subtotal">
+                        <td class="left_subtotal_text">Discount</td>
+                        <td class="right_subtotal_text">-${{ "%.2f"|format(discount) }}</td>
+                    </tr>
+                    <tr class="subtotal">
+                        <td class="left_subtotal_text">Total</td>
+                        <td class="right_subtotal_text">${{ "%.2f"|format(total) }}</td>
+                    </tr>
+                    <tr>
+                        <td class="checkout_button_td" colspan="2">
+                            <button type="submit" formaction="{{ url_for('checkout') }}" class="checkout_button">Checkout</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="popup show">
+                    {% for category, message in messages %}
+                        <span>{{ message }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
     </div>
-
-    <div class="subtotal_container">
-        <table class="subtotal_table">
-            <tr class="subtotal_discount">
-                <form action="">
-                    <div class="discount_code">
-                        <input class ="discount_code_input" placeholder="Discount Code">
-                        <a href="#"><button type="submit" class="discount_code_button">Apply</button></a>
-                    </div>
-                </form>
-            </tr>
-            <tr class="subtotal">
-                <td class="left_subtotal_text">Subtotal</td>
-                <td class="right_subtotal_text">$10.00</td>
-            </tr>
-            <tr class="subtotal">
-                <td class="left_subtotal_text">Taxes</td>
-                <td class="right_subtotal_text">$1.50</td>
-            </tr>
-            <tr class="subtotal">
-                <td class="left_subtotal_text">Total</td>
-                <td class="right_subtotal_text">$1062.50</td>
-            </tr>
-            <tr>
-                <td class="checkout_button_td" colspan="2"><button type="submit" class="checkout_button">Checkout</button></td>
-            </tr>
-        </table>
-
-    </div>
-
-   
-    
-
- 
 </body>
 </html>

@@ -6,8 +6,6 @@
 }
 
 /* css for index.html */
-
-
 .header {
     background-color: white;
     position: fixed;
@@ -18,7 +16,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .logo {
@@ -77,8 +74,6 @@
     font-style: italic;
 }
 
-
-
 .main_button {
     background-color: #000000;
     color: #ffffff;
@@ -92,15 +87,11 @@
     cursor: pointer;
 }
 
-
-
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
 /* css for login.html */
 .login_container {
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     min-height: 100vh;
 }
 
@@ -113,17 +104,17 @@
     padding: 30px;
 }
 
-.login_header{
+.login_header {
     text-align: center;
     margin: 20px 0px 40px 0px;
 }
 
-.login_header header{
+.login_header header {
     font-size: 30px;
     font-weight: 600;
 }
 
-.input_box .input_fields{
+.input_box .input_fields {
     width: 100%;
     height: 60px;
     font-size: 17px;
@@ -176,13 +167,11 @@
     cursor: pointer;
 }
 
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
 /* css for register.html */
 .register_container {
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     min-height: 100vh;
 }
 
@@ -195,17 +184,17 @@
     padding: 30px;
 }
 
-.register_header{
+.register_header {
     text-align: center;
     margin: 20px 0px 40px 0px;
 }
 
-.register_header header{
+.register_header header {
     font-size: 30px;
     font-weight: 600;
 }
 
-.register_input_box .register_input_fields{
+.register_input_box .register_input_fields {
     width: 100%;
     height: 60px;
     font-size: 17px;
@@ -258,7 +247,6 @@
     cursor: pointer;
 }
 
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* css for edit_profile.html */
 .logout_button {
     width: 100%;
@@ -280,12 +268,8 @@
     cursor: pointer;
 }
 
-
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
 /* css for search_template.html */
-
-body.search_results{
+body.search_results {
     padding-top: 170px;
 }
 
@@ -334,11 +318,8 @@ body.search_results{
     margin-left: 14px;
     outline: none;
     border: none;
-    background: transparent;   
-
+    background: transparent;
 }
-
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* css for cart.html */
 .cart_page_container {
@@ -369,16 +350,16 @@ table {
 th {
     font-size: 30px;
     font-weight: 800;
-    text-align:left;
+    text-align: left;
     padding-bottom: 20px;
 }
 
-td input{
+td input {
     width: 40px;
     height: 30px;
 }
 
-td img.item_img{
+td img.item_img {
     width: 100px;
     height: 125px;
     margin-right: 30px;
@@ -404,15 +385,15 @@ td img.item_img{
 }
 
 .discount_code_button {
-        background-color: #000000;
-        color: #ffffff;
-        font-size: 13px;
-        width: 65px;
-        height: 40px;
-        border-radius: 5px;
-        border: none;
-        margin-top: 10px;
-        cursor: pointer;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 13px;
+    width: 65px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .subtotal {
@@ -427,42 +408,31 @@ td img.item_img{
 .right_subtotal_text {
     font-weight: 800;
     color: #5c5c5c;
-    
 }
-
-
 
 .checkout_button {
-        background-color: #000000;
-        color: #ffffff;
-        font-weight: 1000px;
-        font-size: 16px;
-        width: 245px;
-        height: 50px;
-        border-radius: 10px;
-        border: none;
-        margin-top: 10px;
-        margin-bottom: 145px;
-        cursor: pointer;
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    width: 245px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-
-
-
-
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
 /* css for store.html */
-
 .store-container {
     display: flex;
-    justify-content:space-around;
-    flex-wrap:wrap;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .database-items a {
     color: inherit;
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .cost {
@@ -470,19 +440,19 @@ td img.item_img{
 }
 
 .database-items {
-    display:flex;
-    flex-direction:column;
-    text-align:center;
-    align-items:center;
-    text-decoration:none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
     color: inherit;
     width: 250px;
     margin: 20px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
-.title{
-    text-align:center;
+.title {
+    text-align: center;
     margin-bottom: 30px;
 }
 
