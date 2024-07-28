@@ -201,9 +201,21 @@ def remove_item(item_id):
 def checkout():
     if 'user_id' not in session:
         return redirect(url_for('login'))
+    
+    conn = sqlite3.connect('data/AllStarDatabase.db')
+    cursor = conn.cursor()
+    currUser = session['user_id']
+
     # Process checkout (collect user details, process payment, etc.)
+
+    # Empty the cart
+    cursor.execute('DELETE FROM carts WHERE user_id = ?', (currUser,))
+    conn.commit()
+    conn.close()
+    
     flash('Order placed successfully!', 'success')
     return redirect(url_for('cart'))
+
 
 if __name__ == '__main__':
     init_db()
