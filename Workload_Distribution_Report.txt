@@ -1,0 +1,4 @@
+Andie Comeaux - Functionality for Shopping cart, made video presentation, state diagrams, and test cases
+Alexandria Harvin - Functionality for Search bar, created database, worked on website appearance, and user stories
+Neil Rosales Suarez - Functionality for search bar, and created class diagrams
+Gideon Callagan - Created website repository and created website base, worked on website appearance and functionality, and made sequence diagrams
